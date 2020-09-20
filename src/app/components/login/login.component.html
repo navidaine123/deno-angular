@@ -3,22 +3,31 @@
 
     <!-- Sign Up -->
     <div class="container__form container--signup">
-      <form class="form" id="form1" (ngSubmit)='register()' #signUpForm="ngForm">
-        <h2 class="form__title">ثبت نام</h2>
+      <form class="form" id="form1" (ngSubmit)='register();signUpForm.reset()' #signUpForm="ngForm">
         <input #firstname="ngModel" name="firstname" type="text" placeholder="نام" class="input"
-          [(ngModel)]="registerModel.firstname" />
-        <input #lastname="ngModel" name="lastname" type="text" placeholder="نام خانوادگی" class="input"
-          [(ngModel)]="registerModel.lastname" />
-        <input #username="ngModel" name="username" type="text" placeholder="نام کاربری" class="input"
-          [(ngModel)]="registerModel.username" />
-        <input #email="ngModel" name="email" type="email" placeholder="پست الکترونیک" class="input"
-          [(ngModel)]="registerModel.email" />
-        <input #password="ngModel" name="password" type="password" placeholder="گذرواژه" class="input"
-          [(ngModel)]="registerModel.password" />
-        <button class="btn" type="submit">ثبت نام</button>
-      </form>
-    </div>
+          [(ngModel)]="registerModel.firstname" required #firstname="ngModel" maxlength="25">
+        <div [hidden]="firstname.valid || firstname.pristine" class="alert alert-danger">s
+        </div>
 
+        <input #lastname="ngModel" name="lastname" type="text" placeholder="نام خانوادگی" class="input"
+          [(ngModel)]="registerModel.lastname" maxlength="25" required />
+
+
+        <input #username="ngModel" name="username" type="text" placeholder="نام کاربری" class="input"
+          [(ngModel)]="registerModel.username" maxlength="25" minlength="6" required />
+
+
+        <input #email="ngModel" name="email" type="email" placeholder="پست الکترونیک" class="input"
+          [(ngModel)]="registerModel.email" maxlength="25" minlength="6" required />
+
+        <input #password="ngModel" name="password" type="password" placeholder="گذرواژه" class="input"
+          [(ngModel)]="registerModel.password" minlength="6" required />
+
+        <input type="password" placeholder="تایید گذرواژه" class="input" required />
+        <button class="btn" type="submit" [disabled]="!signUpForm.form.valid">ثبت نام</button>
+      </form>
+
+    </div>
     <!-- Sign In -->
     <div class="container__form container--signin">
       <form class="form" id="form2" (ngSubmit)='login()' #signInForm="ngForm">

@@ -19,8 +19,8 @@ export class RegisterService {
     return this.http.post<RegisterModel>(`${this.baseUrl}/users`, formData);
   }
 
-  getUsers(): Observable<Array<UserModel>> {
-    return this.http.get<Array<UserModel>>(`${this.baseUrl}/users`);
+  getUsers(): Observable<any> {
+    return this.http.get((`${this.baseUrl}/users`));
   }
 
 }

@@ -1,3 +1,4 @@
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './users.component';
 import { NgModule } from '@angular/core';
@@ -16,6 +17,7 @@ import { MatTableModule } from '@angular/material/table';
     CommonModule,
     MatTableModule,
     UsersRoutingModule,
+    FontAwesomeModule
   ]
 })
 export class UsersModule { }

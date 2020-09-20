@@ -1,18 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
   /* COLORS */
-  --white: #e9e9e9;
-  --gray: #333;
-  --blue: #0367a6;
-  --lightblue: #008997;
 
   /* RADII */
   --button-radius: 0.7rem;
 }
 
+@font-face {
+  font-family: iran-sans;
+  src: url('assets/Iranian\ Sans.ttf') format('opentype')
+}
+
+@font-face {
+  font-family: "IRANSansWeb";
+  src: url("//db.onlinewebfonts.com/t/002254488ce1877d55ad3693e527ad1e.eot");
+  src: url("//db.onlinewebfonts.com/t/002254488ce1877d55ad3693e527ad1e.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/002254488ce1877d55ad3693e527ad1e.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/002254488ce1877d55ad3693e527ad1e.woff") format("woff"), url("//db.onlinewebfonts.com/t/002254488ce1877d55ad3693e527ad1e.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/002254488ce1877d55ad3693e527ad1e.svg#IRANSansWeb") format("svg");
+}
+
+@import url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css');
+
 * {
   margin: 0;
-  font-family: sans-serif;
+  font-family: 'Vazir';
 
   input,
   a,
@@ -28,5 +37,12 @@
   }
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

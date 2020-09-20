@@ -1,0 +1,50 @@
+@import '../../../theme/Variables.scss';
+
+table {
+  margin: 1rem auto;
+  width: 50rem;
+  direction: rtl;
+  overflow: hidden;
+
+
+  tr {
+
+    th,
+    td {
+      text-align: center;
+
+
+      button {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        transition: 200 all;
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+
+        fa-icon.trash {
+          color: #720a0a;
+        }
+
+        fa-icon.pen {
+          color: #068127;
+        }
+      }
+    }
+
+    td {
+      font-size: 0.9rem;
+      background-color: $background-color;
+    }
+
+    th {
+      background-color: $primary-color;
+      font-weight: bold;
+      font-size: 0.8rem;
+      color: $text-light;
+    }
+  }
+}

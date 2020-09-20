@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   loginModel: LoginModel | any = {};
   registerModel: RegisterModel | any = {};
 
+
   constructor(
     private authService: AuthService,
     private router: Router,

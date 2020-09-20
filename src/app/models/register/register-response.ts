@@ -1,10 +1,14 @@
 
+export class RegisterModel {
 
-export interface RegisterModel {
-    id: string;
-    firstname: string;
-    lastname: string;
-    username: string;
-    email: string;
-    password: string;
+    constructor(
+        public id: string,
+        public firstname: string,
+        public lastname: string,
+        public username: string,
+        public email: string,
+        public password: string) {
+
+    }
+
 }

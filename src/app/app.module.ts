@@ -6,14 +6,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginModule } from './components/login/login.module';
 import { AppComponent } from './app.component';
-import { ThemeComponent } from './theme/theme.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ThemeComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,6 +21,8 @@ import { MatTableModule } from '@angular/material/table';
     LoginModule,
     HttpClientModule,
     MatTableModule,
+    FontAwesomeModule,
+
   ],
   providers: [
     {
