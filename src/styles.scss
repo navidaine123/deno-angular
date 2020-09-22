@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
 :root {
   /* COLORS */
 
@@ -18,31 +20,31 @@
 }
 
 @import url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css');
+// Override the typography in the core CSS.
+@import './app/theme/custom-typography.scss';
+@include mat-core($custom-typography);
+
 
 * {
   margin: 0;
-  font-family: 'Vazir';
+}
 
-  input,
-  a,
-  p,
-  span,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    direction: rtl;
-  }
+body,
+input,
+a,
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Vazir';
+  direction: rtl;
 }
 
 html,
 body {
   height: 100%;
-}
-
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
 }

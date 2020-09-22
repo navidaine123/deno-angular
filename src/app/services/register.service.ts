@@ -23,4 +23,8 @@ export class RegisterService {
     return this.http.get((`${this.baseUrl}/users`));
   }
 
+  deleteUser(id: string): Observable<any> {
+    return this.http.delete((`${this.baseUrl}/users/${id}`));
+  }
+
 }

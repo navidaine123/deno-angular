@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   mode = 'signIn';
   loginModel: LoginModel | any = {};
   registerModel: RegisterModel | any = {};
-
+  test: string;
 
   constructor(
     private authService: AuthService,
@@ -26,13 +26,14 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
   setMode(mode: string): void {
     this.mode = mode;
   }
   login(): void {
     this.authService.login(this.loginModel).pipe(take(1)).subscribe(next => {
       this.authService.setToken(next.jwt);
-      this.router.navigate(['home']);
+      this.router.navigate(['']);
     },
       error => {
         console.log(error);
@@ -41,7 +42,7 @@ export class LoginComponent implements OnInit {
 
   register(): void {
     this.registerService.register(this.registerModel).pipe(take(1)).subscribe(next => {
-      this.router.navigate(['home']);
+      this.router.navigate(['']);
     },
       error => {
         console.log(error);

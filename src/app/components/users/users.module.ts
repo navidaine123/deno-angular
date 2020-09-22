@@ -5,19 +5,26 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserListComponent } from './user-list/user-list.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
+import { UserDeleteComponent } from './user-delete/user-delete.component';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
 @NgModule({
   declarations: [
     UsersComponent,
-    UserListComponent
+    UserListComponent,
+    UserDeleteComponent
   ],
   imports: [
     CommonModule,
     MatTableModule,
     UsersRoutingModule,
-    FontAwesomeModule
-  ]
+    FontAwesomeModule,
+    MatDialogModule,
+    MatButtonModule,
+  ],
+  providers: []
 })
 export class UsersModule { }

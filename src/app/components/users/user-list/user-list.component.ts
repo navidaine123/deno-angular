@@ -1,10 +1,12 @@
-import { map, take, tap } from 'rxjs/operators';
+import { UserModel } from './../../../models/users/user.model';
+import { take } from 'rxjs/operators';
 import { RegisterService as UserService } from '../../../services/register.service';
-import { UserModel } from '../../../models/users/user.model';
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { UserDeleteComponent } from '../user-delete/user-delete.component';
 
 
 @Component({
@@ -20,8 +22,9 @@ export class UserListComponent implements AfterViewInit {
   pen = faPen;
 
   @ViewChild(MatSort) sort: MatSort;
-  constructor(private userService: UserService) {
-    this.dataSource = new MatTableDataSource(this.users);
+  constructor(
+    private userService: UserService,
+    private dialog: MatDialog) {
   }
 
   ngAfterViewInit(): void {
@@ -35,8 +38,18 @@ export class UserListComponent implements AfterViewInit {
   ngEdit(id: string): void {
 
   }
-  ngDelete(id: string): void {
 
+  openDialog(user: UserModel): void {
+    const conf = new MatDialogConfig();
+    conf.data = { user };
+    const dialogRef = this.dialog.open(UserDeleteComponent, conf);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.userService.deleteUser(user.id).pipe(take(1)).subscribe(next => {
+          this.dataSource.data = this.dataSource.data.filter(x => x.id !== user.id);
+        });
+      }
+    });
   }
 
 }
