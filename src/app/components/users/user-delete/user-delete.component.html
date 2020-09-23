@@ -1,10 +1,10 @@
-<h1 mat-dialog-title>{{userName}}</h1>
-<div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div>
+<h1 mat-dialog-title>هشدار</h1>
+<div mat-dialog-content style="direction: rtl;">آیا مایلید کاربر {{userName}} را حذف نمایید؟</div>
 <div mat-dialog-actions>
-  <button mat-icon-button color="warn" (click)="closeDialog(true)">
+  <button mat-flat-button color="primary" (click)="closeDialog(true)">بله
     <fa-icon [icon]='faTrash'></fa-icon>
   </button>
-  <button mat-icon-button color="warn" (click)="closeDialog(false)">
+  <button mat-flat-button color="warn" (click)="closeDialog(false)">خیر
     <fa-icon [icon]='faTimes'></fa-icon>
   </button>
 </div>

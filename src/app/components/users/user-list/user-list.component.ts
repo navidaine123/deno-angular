@@ -1,12 +1,13 @@
 import { UserModel } from './../../../models/users/user.model';
 import { take } from 'rxjs/operators';
-import { RegisterService as UserService } from '../../../services/register.service';
+import { RegisterService as UserService } from '../../../services/users.service';
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { UserDeleteComponent } from '../user-delete/user-delete.component';
+import { MatPaginator } from '@angular/material/paginator';
 
 
 @Component({
@@ -15,12 +16,13 @@ import { UserDeleteComponent } from '../user-delete/user-delete.component';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements AfterViewInit {
-  displayedColumns: string[] = ['position', 'firstname', 'lastname', 'username', 'email', 'action'];
+  displayedColumns: string[] = ['index', 'firstname', 'lastname', 'username', 'email', 'action'];
   dataSource: MatTableDataSource<UserModel>;
   users: UserModel[] = [];
   trash = faTrash;
   pen = faPen;
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   constructor(
     private userService: UserService,
@@ -28,11 +30,21 @@ export class UserListComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.userService.getUsers().pipe(take(1)).subscribe((next: UserModel[]) => {
+    this.userService.getUsers().pipe(take(1)).subscribe((next: any) => {
       this.users = next;
+      console.log(next);
       this.dataSource = new MatTableDataSource(this.users);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     });
-    this.dataSource.sort = this.sort;
+  }
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   ngEdit(id: string): void {
@@ -45,8 +57,8 @@ export class UserListComponent implements AfterViewInit {
     const dialogRef = this.dialog.open(UserDeleteComponent, conf);
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.userService.deleteUser(user.id).pipe(take(1)).subscribe(next => {
-          this.dataSource.data = this.dataSource.data.filter(x => x.id !== user.id);
+        this.userService.deleteUser(user._id).pipe(take(1)).subscribe(next => {
+          this.dataSource.data = this.dataSource.data.filter(x => x._id !== user._id);
         });
       }
     });

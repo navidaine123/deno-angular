@@ -1,4 +1,4 @@
-import { RegisterService } from './../../services/register.service';
+import { RegisterService } from '../../services/users.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { LoginModel } from '../../models/auth/login-model';
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   }
   login(): void {
     this.authService.login(this.loginModel).pipe(take(1)).subscribe(next => {
-      this.authService.setToken(next.jwt);
+      this.authService.setToken(next.token);
       this.router.navigate(['']);
     },
       error => {
@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
 
   register(): void {
     this.registerService.register(this.registerModel).pipe(take(1)).subscribe(next => {
+      this.authService.setToken(next.token);
       this.router.navigate(['']);
     },
       error => {

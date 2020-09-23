@@ -15,8 +15,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(model: LoginModel): Observable<LoginResponse> {
-    const formData = serialize(model);
-    return this.http.post<LoginResponse>(`${this.baseUrl}/login`, formData);
+    return this.http.post<LoginResponse>(`${this.baseUrl}/auth/Login`, model);
   }
 
   getToken(): string {

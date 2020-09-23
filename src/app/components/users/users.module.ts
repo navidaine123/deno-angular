@@ -8,6 +8,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { UserDeleteComponent } from './user-delete/user-delete.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -24,6 +26,8 @@ import { MatButtonModule } from '@angular/material/button';
     FontAwesomeModule,
     MatDialogModule,
     MatButtonModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
   ],
   providers: []
 })

@@ -17,7 +17,8 @@ export class UserDeleteComponent implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<UserDeleteComponent>,
     @Inject(MAT_DIALOG_DATA) data) {
-    this.userName = data.user.username;
+    console.log(data.user);
+    this.userName = data.user.NormaliziedUsername;
   }
 
   ngOnInit(): void {

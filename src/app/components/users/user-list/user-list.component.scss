@@ -1,9 +1,13 @@
 @import '../../../theme/Variables.scss';
 
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
 table {
-  margin: 1rem auto;
-  width: 50rem;
-  direction: rtl;
+  width: 100%;
   overflow: hidden;
 
 
@@ -12,7 +16,6 @@ table {
     th,
     td {
       text-align: center;
-
 
       button {
         background-color: transparent;

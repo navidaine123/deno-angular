@@ -36,7 +36,7 @@ export class CustomvalidationService {
             } else {
                 confirmPasswordControl.setErrors(null);
             }
-        }
+        };
     }
 
     userNameValidator(userControl: AbstractControl) {

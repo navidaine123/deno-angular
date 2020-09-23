@@ -15,8 +15,7 @@ export class RegisterService {
   constructor(private http: HttpClient) { }
 
   register(model: RegisterModel): Observable<RegisterModel> {
-    const formData = serialize(model);
-    return this.http.post<RegisterModel>(`${this.baseUrl}/users`, formData);
+    return this.http.post<RegisterModel>(`${this.baseUrl}/users`, model);
   }
 
   getUsers(): Observable<any> {

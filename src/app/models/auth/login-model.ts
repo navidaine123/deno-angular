@@ -4,5 +4,5 @@ export interface LoginModel {
     keepLoggedin: boolean;
 }
 export interface LoginResponse {
-    jwt: string;
+    token: string;
 }

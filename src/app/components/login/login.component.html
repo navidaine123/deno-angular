@@ -4,28 +4,31 @@
     <!-- Sign Up -->
     <div class="container__form container--signup">
       <form class="form" id="form1" (ngSubmit)='register();signUpForm.reset()' #signUpForm="ngForm"
-        [appMatchPassword]="['password', 'CnfmPasswordVar']">
-        <input #firstname="ngModel" name="firstname" type="text" placeholder="نام" class="input"
-          [(ngModel)]="registerModel.firstname" required #firstname="ngModel" maxlength="25">
-        <div [hidden]="firstname.valid || firstname.pristine" class="alert alert-danger">s
+        [appMatchPassword]="['Password', 'CnfmPasswordVar']">
+        <input #FirstName="ngModel" name="FirstName" type="text" placeholder="نام" class="input"
+          [(ngModel)]="registerModel.FirstName" required #FirstName="ngModel" maxlength="25">
+        <div [hidden]="FirstName.valid || FirstName.pristine" class="alert alert-danger">s
         </div>
 
-        <input #lastname="ngModel" name="lastname" type="text" placeholder="نام خانوادگی" class="input"
-          [(ngModel)]="registerModel.lastname" maxlength="25" required />
+        <input #LastName="ngModel" name="LastName" type="text" placeholder="نام خانوادگی" class="input"
+          [(ngModel)]="registerModel.LastName" maxlength="25" required />
 
 
-        <input #username="ngModel" name="username" type="text" placeholder="نام کاربری" class="input"
-          [(ngModel)]="registerModel.username" maxlength="25" minlength="6" required />
+        <input #Username="ngModel" name="Username" type="text" placeholder="نام کاربری" class="input"
+          [(ngModel)]="registerModel.Username" maxlength="25" minlength="6" required />
 
 
-        <input #email="ngModel" name="email" type="email" placeholder="پست الکترونیک" class="input"
-          [(ngModel)]="registerModel.email" maxlength="25" minlength="6" required />
+        <input #Email="ngModel" name="Email" type="Email" placeholder="پست الکترونیک" class="input"
+          [(ngModel)]="registerModel.Email" maxlength="25" minlength="6" required />
 
-        <input #password="ngModel" name="password" type="password" placeholder="گذرواژه" class="input"
-          [(ngModel)]="registerModel.password" minlength="6" required />
+        <input #PhoneNumber="ngModel" name="PhoneNumber" type="tel" placeholder="شماره تماس" class="input"
+          [(ngModel)]="registerModel.PhoneNumber" maxlength="11" minlength="10" required />
 
-        <input class="input" id="CnfrmPasswordId" type="password" placeholder="تایید گذرواژه (required)" required
-          appEqualControl="password" ngModel name="CnfmPasswordVar" appForbiddenName='bob' #CnfmPasswordVar="ngModel" />
+        <input #Password="ngModel" name="Password" type="Password" placeholder="گذرواژه" class="input"
+          [(ngModel)]="registerModel.Password" minlength="6" required />
+
+        <input class="input" id="CnfrmPasswordId" type="Password" placeholder="تایید گذرواژه (required)" required
+          appEqualControl="Password" ngModel name="CnfmPasswordVar" appForbiddenName='bob' #CnfmPasswordVar="ngModel" />
 
         <button class="btn" type="submit" [disabled]="!signUpForm.valid">ثبت نام</button>
       </form>
@@ -35,10 +38,10 @@
     <div class="container__form container--signin">
       <form class="form" id="form2" (ngSubmit)='login()' #signInForm="ngForm">
         <h2 class="form__title">ورود به حساب کاربری</h2>
-        <input #username="ngModel" name="username" type="text" placeholder="نام کاربری" class="input"
-          [(ngModel)]="loginModel.username" required />
-        <input #password="ngModel" name="password" type="password" placeholder="گذرواژه" class="input"
-          [(ngModel)]="loginModel.password" required />
+        <input #Username="ngModel" name="Username" type="text" placeholder="نام کاربری" class="input"
+          [(ngModel)]="loginModel.Username" required />
+        <input #Password="ngModel" name="Password" type="Password" placeholder="گذرواژه" class="input"
+          [(ngModel)]="loginModel.Password" required />
         <!-- <a href="#" class="link">فراموشی گذرواژه ؟</a> -->
         <button class="btn" type="submit" [disabled]='signInForm.invalid'>ورود به حساب کاربری</button>
       </form>
